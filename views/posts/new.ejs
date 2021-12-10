@@ -1,0 +1,66 @@
+<%- include('../partials/header.ejs')%>
+<%- include('../partials/navbar.ejs')%>
+
+
+<div class="container">
+    <h2>
+        Rota de Postagem!
+    </h2>
+
+    <form action="/admin/posts/new" method="post" style="background-color: #fff;"> 
+        <div class="card">
+            <div class="card-header">
+                <h3> Cadastro de Posts </h3>
+            </div>
+     
+            <div class="card-body">
+                <label for="category">
+                    <h2>
+                        Categoria desejada:
+                    </h2>
+                </label>
+
+                
+
+                    <select name="category" class="form-control">
+                        <% categories.forEach(category => {  %>
+                            <option value="<%= category.id %> "> <%= category.title %> </option>
+                        <% }) %>
+                    </select>
+                    <br>
+
+                
+                <input type="text" class="form-control" id="title" name="title" placeholder="Digite o Titulo do Artigo"> <br>
+
+                <textarea name="body" class="form-control" id="article" placeholder="Escreva aqui!">
+
+                </textarea> <br>
+                
+                <input type="text" name="description" id="description" placeholder="Descreva um pouco sobre o texto..." class="form-control">
+                <br>
+                <input type="text" name="keywords" id="keywords" placeholder="Palavras Chave" class="form-control">
+
+                <br>
+                <input type="text" name="img" id="img" placeholder="Link da capa da imagem" class="form-control">
+                <button type="submit" class="btn btn-success"> Postar Artigo </button>
+            </div>
+           
+        </div>
+      
+    </form>
+</div>
+<%- include('../partials/footer.ejs')%>
+
+<script src="/tinymce/tinymce.min.js"></script>
+
+<script>
+    tinymce.init({
+        language: 'pt_BR',
+        selector: "#article",
+        plugins: [
+            'advlist autolink link image lists print preview hr searchreplace wordcount fullscreen insertdatetime media save table paste emoticons'
+
+        ]
+        
+    })
+</script>

@@ -1,0 +1,113 @@
+<%- include('./partials/header.ejs')%>
+<%- include('./partials/navbar.ejs')%>
+
+
+
+
+
+<div class="container">
+  <div class="card-header">
+    <h2>
+      Últimos artigos
+    </h2>
+  </div>
+
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #03031d; max-width: 150px; border: 0; border-radius: 1rem; color: white;">
+      Filtro
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: #03031d; color: #fff;">
+      <% categories.forEach(category => {  %>
+        <a href="/categoria/<%= category.slug %> " class="dropdown-item" style="color: rgb(73, 72, 72)"> <%= category.title %> </a>
+      <% }) %>
+    </div>
+  </li>
+  
+</div>
+<% posts.forEach(post => {  %>
+  <div class="container" style="border-radius: 1.2rem; border: 0;">
+    <div class="container">
+       
+        
+        <br>
+    
+            <div class="blog-card">
+                <div class="meta">
+                    <div class="photo" style="background-image: url(<%= post.img %> )"></div>
+        
+                </div>
+                <div class="description">
+                    <h1> <%= post.title %></h1>
+                   
+                    <p><%= post.description %></p>
+                    <p class="read-more">
+                        <a href="/<%= post.slug %> "> Ler mais </a>
+                    </p>
+                </div>
+            </div>
+            </div>            
+
+        <% }) %>
+
+        <br>
+        <a href="/">
+          <center>
+              <button class="btn btn-success"> Voltar para Home </button>
+          </center>
+      </a>
+    </div>
+</div>
+
+<br>
+<br>
+ </div>
+
+ <center>
+  <div class="container" style="display: inline;">
+
+    <div class="card-header">
+      <h2>
+        Últimas Notícias
+      </h2>
+    </div>
+
+    <div style="margin: auto; max-width: 400px;">
+      <div class="embed-responsive embed-responsive-21by9">
+        <center>
+         <iframe src="//rss.bloople.net/?url=https%3A%2F%2Fwww.gazetaesportiva.com%2Frss%2F&detail=-1&limit=15&type=html" class="embed-responsive-item"></iframe>
+         
+        </center>
+       </div>
+     </div>
+
+     <br>
+     
+     <div style="margin: auto; max-width: 400px;">
+      <div class="embed-responsive embed-responsive-21by9">
+        <center>
+          <iframe src="//rss.bloople.net/?url=https%3A%2F%2Fg1.globo.com%2Frss%2Fg1%2Fbrasil%2F&detail=-1&limit=15&showtitle=false&type=html" class="embed-responsive-item"></iframe>
+        </center>
+         
+        </center>
+       </div>
+     </div>
+     
+     
+     <div class="embed-responsive embed-responsive-21by9">
+      <center>
+       
+     </div>
+     
+    </div>
+ 
+  </div>
+
+  
+ </center>
+
+<%- include('./partials/footer-front.ejs')%>
+<%- include('./partials/footer.ejs')%>
+
+
+
+

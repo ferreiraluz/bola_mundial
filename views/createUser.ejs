@@ -1,0 +1,46 @@
+<%- include('./partials/header.ejs')%>
+<%- include('./partials/navbar.ejs')%>
+
+
+
+
+<div class="container bg-primary">
+
+    <br>
+
+    <h2> Criar Usuário </h2>
+
+    <br>
+
+    <form action="/admin/createUser" method="post">
+        <div class="card">
+            <div class="card-header">
+                <h2> Crie um nome de usuário </h2>
+            </div>
+
+            <div class="card-body">
+                <input type="text" name="username" id="username" class="form-control" placeholder="Digite aqui">
+            </div>
+        </div>
+        
+        <br>
+       <div class="card">
+            <div class="card-header">
+                <h2> Crie uma senha </h2>
+            </div>
+
+            <div class="card-body">
+                <input type="password" name="password" id="password" class="form-control" placeholder="Crie sua senha">
+            </div>
+
+       </div>
+        <br>
+
+        <button type="submit" class="btn btn-success">
+            Criar Usuário
+        </button>
+    </form>
+</div>
+
+
+<%- include('./partials/footer.ejs')%>

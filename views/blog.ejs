@@ -1,0 +1,53 @@
+<%- include('./partials/header.ejs')%>
+<%- include('./partials/navbar.ejs')%>
+
+<div class="container">
+    <div class="container">
+       
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #03031d; max-width: 150px; border: 0; border-radius: 1rem; color: white;">
+          Filtro
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: #03031d; color: #fff;">
+          <% categories.forEach(category => {  %>
+            <a href="/categoria/<%= category.slug %> " class="dropdown-item" style="color: rgb(73, 72, 72)"> <%= category.title %> </a>
+          <% }) %>
+        </div>
+      </li>
+        <% posts.forEach(post => {  %>
+    
+            <div class="blog-card">
+                <div class="meta">
+                    <div class="photo" style="background-image: url(<%= post.img %> )"></div>
+        
+                </div>
+                <div class="description">
+                    <h1 align="justify"> <%= post.title %></h1>
+                   
+                    <p align="justify"><%= post.description %> </p>
+                    <p class="read-more">
+                        <a href="/<%= post.slug %> "> Ler mais </a>
+                    </p>
+                </div>
+            </div>
+            </div>            
+
+        <% }) %>
+
+        <br>
+        <a href="/">
+          <center>
+            <button class="btn btn-success">
+              Voltar para a home
+            </button>
+          </center>
+      </a>
+    </div>
+</div>
+<br>
+
+
+<%- include('./partials/footer-front.ejs')%>
+<%- include('./partials/footer.ejs')%>
+
+

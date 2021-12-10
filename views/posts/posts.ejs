@@ -1,0 +1,70 @@
+<%- include('../partials/header.ejs')%>
+
+
+<div class="container">
+    <h2>
+        Lista de Artigos!
+    </h2>
+
+    <br>
+
+    <a href="/admin/posts/cadastro">
+        <button class="btn btn-success">
+            Criar novo Post
+        </button>
+    </a>
+
+    <br> <br>
+
+    <table class="table table-bordered bg-light">
+        <tr>
+             <thead>
+                 <th>Id</th>
+                 <th>Categoria</th>
+                 <th>Título</th>
+                 <th>Slug</th>
+                 <th>Ações</th>
+             </thead>
+        </tr>
+ 
+         <% posts.forEach(post => {  %>
+             <tr style="background-color: white;">
+                 <th> <%= post.id %> </th>
+                 <th> <%= post.category.title %></th>
+                 <th> <%= post.title %> </th>
+                 <th> <%= post.slug %> </th>
+                 <th> 
+                     <a href="/admin/posts/edit/<%= post.id %>">
+ 
+                         <button class="btn btn-warning"  style="display: inline;">
+                             Editar
+                         </button>
+                         
+                     </a>
+                    <form action="/admin/posts/delete" method="post" style="display: inline;" onsubmit="confirmDelete(event, this)">
+ 
+                   
+                     <button class="btn btn-danger" style="display: inline;">
+                         Excluir
+                     </button>
+
+                     <input type="hidden" name="id" value="<%= post.id %>">
+                    </form>
+                 </th>
+             </tr>
+         <% }) %>
+     </table>
+</div>
+
+<%- include('../partials/footer.ejs')%>
+
+<script>
+    function confirmDelete(event, form){
+        event.preventDefault();
+        const decision = confirm("Você quer deletar este artigo?");
+
+        if(decision){
+            form.submit()
+        }
+    }
+</script>

@@ -1,0 +1,167 @@
+<%- include('./partials/header.ejs')%>
+<%- include('./partials/navbar.ejs')%>
+
+
+ 
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="./img/s1.jpg" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+          <img src="./img/s2.jpg" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+          <img src="./img/s3.jpg" class="d-block w-100" alt="...">
+        </div>
+      </div>
+    </div>
+
+
+
+<div class="container">
+  <div class="card-header">
+    <h2>
+      Últimos Artigos
+    </h2>
+  </div>
+  
+</div>
+<% posts.forEach(post => {  %>
+  <div class="container" style="border-radius: 1.2rem; border: 0;">
+    <div class="container">
+       
+        
+        <br>
+    
+            <div class="blog-card">
+                <div class="meta">
+                    <div class="photo" style="background-image: url(<%= post.img %> )"></div>
+        
+                </div>
+                <div class="description">
+                    <h1> <%= post.title %></h1>
+                   
+                    <p align="justify"><%= post.description %></p>
+                    <p class="read-more">
+                        <a href="/<%= post.slug %> "> Ler mais </a>
+                    </p>
+                </div>
+            </div>
+            </div>            
+
+        <% }) %>
+
+        <br>
+        <a href="/blog">
+          <center>
+              <button class="btn btn-success"> Ver todos os artigos </button>
+          </center>
+      </a>
+    </div>
+</div>
+
+<br>
+<br>
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="./img/patrocinio.jpg" class="d-block w-100">
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid" style="background-color: #05011b;">
+  <center>
+    <a href="" class="btn btn-success">
+      Torne-se parceiro!
+    </a>
+  </center>
+
+  <br>
+</div>
+
+
+
+  
+<div class="container-fluid" style="background-color: #05011b;">
+  <div class="card-header">
+    <center>
+      <h2>
+        Últimas Notícias
+      </h2>
+    </center>
+  </div>
+
+  <div style="margin: auto; max-width: 400px;">
+    <div class="embed-responsive embed-responsive-21by9">
+      <center>
+       <iframe src="//rss.bloople.net/?url=https%3A%2F%2Fwww.gazetaesportiva.com%2Frss%2F&detail=-1&limit=15&type=html" class="embed-responsive-item text-muted" style="border: 0; background-color: #b8babb;"></iframe>
+      
+       
+      </center>
+     </div>
+   </div>
+
+
+   </div>
+
+
+<div class="box-cookies hide">
+  <p class="msg-cookies">Este site usa cookies para garantir que você obtenha a melhor experiência.</p>
+  <button class="btn-cookies">Aceitar!</button>
+  <a href="/privacidade">
+    Saiba Mais
+  </a>
+</div>
+
+
+<div class="container-fluid" style="background-color: #05011b;">
+
+  <br>
+  <br>
+  <center>
+    <h2 style="color: #5ad67d;">
+      Cadastre-se em nossa Newsletter!
+    </h2>
+  </center>
+  <form action="/email" method="post">
+    <input type="email" name="email" id="email" class="form-control" placeholder="Seu email" style="max-width: 800px; margin: auto;">
+    <br>
+    <center>
+      <button type="submit" class="btn btn-success"> Cadastrar </button>
+   
+    </center>
+    <br>
+   </form>
+</div>
+
+<%- include('./partials/footer.ejs')%>
+<%- include('./partials/footer-front.ejs')%>
+
+<script>
+  (() => {
+  if (!localStorage.pureJavaScriptCookies) {
+    document.querySelector(".box-cookies").classList.remove('hide');
+  }
+  
+  const acceptCookies = () => {
+    document.querySelector(".box-cookies").classList.add('hide');
+    localStorage.setItem("pureJavaScriptCookies", "accept");
+  };
+  
+  const btnCookies = document.querySelector(".btn-cookies");
+  
+  btnCookies.addEventListener('click', acceptCookies);
+})();
+</script>
+
+
+
+
